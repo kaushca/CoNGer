@@ -3,7 +3,7 @@ Germline Copy Number detection in Haloplex data
 
 ## General workflow
 
-1.	Binned counts normalisation.
+1.	Binned counts normalisation
 
 2.	Adaptive control creation
 
