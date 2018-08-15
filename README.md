@@ -11,6 +11,6 @@ Germline Copy Number detection in Haloplex data
 
 4.	Target-region CNV detection
 
-## Dependencies
+## User guide
 
-Python 2.7+ , R 3.0 +  
+https://cnv.gitbook.io/gercon/
