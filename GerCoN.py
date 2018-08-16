@@ -14,18 +14,22 @@ scriptPath = os.path.realpath(os.path.dirname(sys.argv[0]))
 class Options:
 
 	def __init__(self):
-		self.parser = argparse.ArgumentParser("Generating data file")
+		self.parser = argparse.ArgumentParser("Germline Copy Number detection tool for Haloplex data")
 		self.parser.add_argument('-t','--tumor',help = 'File containing collection of paths to  tumour BAM files, each in new line',required=True)
 		self.parser.add_argument('--info',help="Tab delimited file containing sample information (sample name, library average fragment size, flow cell, library prep plate and sequencing pool)")
 		self.parser.add_argument('-c','--control',help = 'Path to normalized samples to create the required control -either a directory containing all subdirectories for each batch or a file with normalized samples (with no batch based info)',required=True)
 		self.parser.add_argument('-b','--bed',help = 'Bed definition of covered regions',required=True)
 		self.parser.add_argument('--out',help = 'Output directory',required=True)
 		self.parser.add_argument('--fasta',help = 'FASTA file of the reference genome',required=True)
-		self.parser.add_argument('--gc',help = 'GC content % in targets [optional]',default =False)
+		self.parser.add_argument('--gc',help = 'GC content %% in targets [optional]',default =False)
 		self.parser.add_argument('--samples',help='Provide tumour sample names separated by spaces [optional]',nargs='+')
 		self.parser.add_argument('--lowFragments',help='Lower threshold for fragment count (used in creating the pooled normal and frequency cutoffs for CNV calls) [optional]',default=325)
-		
-		args = self.parser.parse_args()
+
+		try:
+			args = self.parser.parse_args()
+		except:
+			self.parser.print_help()
+			sys.exit(0)
 		
 		if args.tumor:
 			self.tumor=args.tumor

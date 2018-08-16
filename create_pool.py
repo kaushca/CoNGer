@@ -59,7 +59,7 @@ class Options:
 def createPool(inF,bed,outDir,all_samples,tot_gm,gc):
 	size = map(float,libsize(inF,bed,outDir,all_samples))	
 		
-	print "Calculating mean coverage..."	
+	print("Calculating mean coverage...")
 	
 	calculateCoverage(inF,bed,outDir,all_samples,tot_gm,size)
 	
@@ -125,13 +125,13 @@ def main():
 				f=open(os.path.join(subDir,"samples.txt"),"w")
 				f.write("\n".join(all_samples))
 				f.close()
-				print "Creating Pool for "+x
+				print("Creating Pool for "+x)
 				createPool(inF,bed,subDir,all_samples,tot_gm,gc)
 			
 	else:
 		all_samples = controlNames
 		inF = controlFiles
-		print "No batch based pooling"
+		print("No batch based pooling")
 		createPool(inF,bed,outDir,all_samples,tot_gm,gc)
 	
 if __name__ == "__main__":

@@ -401,10 +401,10 @@ def extractInfo(info,fragHigh=340,fragLow=325,minSamples=5,nPool=15):
 			r = [e for row in rr for e in row]
 		else:
 			if lanePlates.count(i)<2:
-				print "Not enough samples to pool in plate "+k[0]+" and lane "+k[1]+" exiting from software"
+				print("Not enough samples to pool in plate "+k[0]+" and lane "+k[1]+" exiting from software")
 				sys.exit(1)
 			elif lanePlates.count(i)<minSamples:
-				print "Less than "+str(minSamples)+" samples in plate "+k[0]+" and lane "+k[1]
+				print("Less than "+str(minSamples)+" samples in plate "+k[0]+" and lane "+k[1])
 			rr = [longFrag,shortFrag,restFrag]
 			r = [e for row in rr for e in row]
 			
