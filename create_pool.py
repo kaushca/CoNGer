@@ -20,7 +20,7 @@ class Options:
 		self.parser.add_argument('--out',help = 'Output directory',required=True)
 		self.parser.add_argument('--fasta',help = 'FASTA file of the reference genome',required=True)
 		self.parser.add_argument('--info',help="Tab delimited file containing sample information (sample name, library average fragment size and flow cell are mandatory)")
-		self.parser.add_argument('--gc',help = 'GC content % in targets [optional]',default =False)
+		self.parser.add_argument('--gc',help = 'GC content %% in targets [optional]',default =False)
 		self.parser.add_argument('--lowFragments',help='Lower threshold for fragment count (used in creating the pooled normal and frequency cutoffs for CNV calls) [optional]',default=325)
 		self.parser.add_argument('--highFragments',help='Lower threshold for fragment count (used in creating the pooled normal) [optional]',default=340)
 		self.parser.add_argument('--minSamples',help='Minimum number of samples to be pooled per group',default=5)
