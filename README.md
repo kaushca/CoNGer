@@ -17,4 +17,4 @@ CoNGer works with a large pool of germline samples. We implemented adaptive cont
 
 ## User guide
 
-https://cnv.gitbook.io/gercon/
+https://cnv.gitbook.io/conger/
