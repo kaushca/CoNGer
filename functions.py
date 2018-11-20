@@ -1,4 +1,4 @@
-#! /usr/bin/python2.7
+#! /usr/bin/python
 
 import os
 import sys
@@ -76,7 +76,7 @@ def getMeanCoverage(bam,bed,outDir,sample,gm,libsize):
 	
 	tempF=os.path.join(outDir,fileName)
 
-	subprocess.call("coverageBed -abam %s -b %s -d > %s" %(bam, bed,tempF),shell=True)	
+	subprocess.call("coverageBed -a %s -b %s -d > %s" %(bed, bam,tempF),shell=True)	#for bedtool 2.25+
 	inF = open(tempF)
 	outF = open(outDir+"/"+sample+".mean","w")
 
