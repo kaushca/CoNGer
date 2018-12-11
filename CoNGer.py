@@ -34,14 +34,16 @@ class Options:
 		if args.tumor:
 			self.tumor=args.tumor
 		if args.control:
-			cmd=shlex.split("awk '{print NF}' %s | tail -n 1" %(args.control))
-			nC,err=subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.PIPE).communicate()
-			self.normalizeC=False
-			if(int(nC)>3):
+			if os.path.isfile(args.control):
+				#cmd=shlex.split("awk '{print NF}' %s | tail -n 1" %(args.control))
+				#nC,err=subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.PIPE).communicate()
+				#self.normalizeC=False
+				#if(int(nC)>3):
 				print("No batch based control...")
 				self.normalizeC=True
 			else:
 				if(args.info):
+					self.normalizeC=False
 					self.info=args.info
 				else:
 					print("Information on batches of the tumour need to be supplied")
@@ -144,6 +146,10 @@ def main():
 		prepInd=line.index("prepPlate")
 		laneInd=line.index("seqPool")
 		fragIndex=line.index("fragSize")
+		tmpFile=open(os.path.join(outDir,"temp.txt"),"w")
+		tmpFile.write(control)
+		tmpFile.close()
+		control=os.path.join(outDir,"temp.txt")
 		
 	for sample in all_samples:
 		if normalizeC==False:

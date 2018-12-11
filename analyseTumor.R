@@ -342,65 +342,65 @@ for(i in 5:ncol(tumor)){
   result<-data.frame(result)
   write.table(result,paste(outF,"/",tName,"_cnvFiltered.txt",sep=""),quote=F,sep="\t",row.names=F)
   
-  x.start<-which(tOut$Start>=38545687 & tOut$Chr=="17 " & tOut$Start<=41600867)
-  png(filename=paste(outF,"/",tName,"brca1.png",sep=""),height=500,width=800,
-      bg="white")
-  f1<-result$Start>=38545687 & result$Chr=="17 " & result$Start<=41600867
-  f2<-result$pval<=0.05
-  col.cord<-f[which(f1&f2)]
-  col.cord<-sapply(col.cord,function(x)which(x == x.start))
-  col.start<-rep(0,length(x.start))
-  if(length(col.cord)>0){
-    col.start[unlist(col.cord)]<-1
-  }
-  plot(tOut$Start[x.start],tOut$log2Ratio[x.start],pch=20,cex=0.8,
-       ylim=c(min(-2,min(tOut$log2Ratio[x.start])),
-              max(2,max(tOut$log2Ratio[x.start]))),col=(col.start)+1,
-       main=paste(tName,"BRCA1",sep=" "),xlab="genome cordinates (bp)",ylab="log2 ratio")
-  abline(v=41196189,col="grey",lty="dashed")
-  abline(v=41276656,col="grey",lty="dashed")
-  text(x=41196189+200,y=max(2,max(tOut$log2Ratio[x.start]))-0.1,labels="BRCA1")
-  dev.off()
+#   x.start<-which(tOut$Start>=38545687 & tOut$Chr=="17 " & tOut$Start<=41600867)
+#   png(filename=paste(outF,"/",tName,"brca1.png",sep=""),height=500,width=800,
+#       bg="white")
+#   f1<-result$Start>=38545687 & result$Chr=="17 " & result$Start<=41600867
+#   f2<-result$pval<=0.05
+#   col.cord<-f[which(f1&f2)]
+#   col.cord<-sapply(col.cord,function(x)which(x == x.start))
+#   col.start<-rep(0,length(x.start))
+#   if(length(col.cord)>0){
+#     col.start[unlist(col.cord)]<-1
+#   }
+#   plot(tOut$Start[x.start],tOut$log2Ratio[x.start],pch=20,cex=0.8,
+#        ylim=c(min(-2,min(tOut$log2Ratio[x.start])),
+#               max(2,max(tOut$log2Ratio[x.start]))),col=(col.start)+1,
+#        main=paste(tName,"BRCA1",sep=" "),xlab="genome cordinates (bp)",ylab="log2 ratio")
+#   abline(v=41196189,col="grey",lty="dashed")
+#   abline(v=41276656,col="grey",lty="dashed")
+#   text(x=41196189+200,y=max(2,max(tOut$log2Ratio[x.start]))-0.1,labels="BRCA1")
+#   dev.off()
+#   
+#   x.start<-which(tOut$Start>=23400115 & tOut$Chr=="16 " & tOut$Start<=27269004)
+#   png(filename=paste(outF,"/",tName,"palb2.png",sep=""),height=500,width=800,
+#       bg="white")
+#   f1<-result$Start>=23400115 & result$Chr=="16 " & result$Start<=27269004
+#   f2<-result$pval<=0.05
+#   col.cord<-f[which(f1&f2)]
+#   col.cord<-sapply(col.cord,function(x)which(x == x.start))
+#   col.start<-rep(0,length(x.start))
+#   if(length(col.cord)>0){
+#     col.start[unlist(col.cord)]<-1
+#   }
+#   plot(tOut$Start[x.start],tOut$log2Ratio[x.start],pch=20,cex=0.8,
+#        ylim=c(min(-2,min(tOut$log2Ratio[x.start])),
+#               max(2,max(tOut$log2Ratio[x.start]))),col=(col.start)+1,
+#        main=paste(tName,"PALB2",sep=" "),xlab="genome cordinates (bp)",ylab="log2 ratio")
+#   abline(v=23603459,col="grey",lty="dashed")
+#   abline(v=23641157,col="grey",lty="dashed")
+#   text(x=23603459+200,y=max(2,max(tOut$log2Ratio[x.start]))-0.1,labels="PALB2")
+#   dev.off()
   
-  x.start<-which(tOut$Start>=23400115 & tOut$Chr=="16 " & tOut$Start<=27269004)
-  png(filename=paste(outF,"/",tName,"palb2.png",sep=""),height=500,width=800,
-      bg="white")
-  f1<-result$Start>=23400115 & result$Chr=="16 " & result$Start<=27269004
-  f2<-result$pval<=0.05
-  col.cord<-f[which(f1&f2)]
-  col.cord<-sapply(col.cord,function(x)which(x == x.start))
-  col.start<-rep(0,length(x.start))
-  if(length(col.cord)>0){
-    col.start[unlist(col.cord)]<-1
-  }
-  plot(tOut$Start[x.start],tOut$log2Ratio[x.start],pch=20,cex=0.8,
-       ylim=c(min(-2,min(tOut$log2Ratio[x.start])),
-              max(2,max(tOut$log2Ratio[x.start]))),col=(col.start)+1,
-       main=paste(tName,"PALB2",sep=" "),xlab="genome cordinates (bp)",ylab="log2 ratio")
-  abline(v=23603459,col="grey",lty="dashed")
-  abline(v=23641157,col="grey",lty="dashed")
-  text(x=23603459+200,y=max(2,max(tOut$log2Ratio[x.start]))-0.1,labels="PALB2")
-  dev.off()
-  
-  x.start<-which(tOut$Start>=30782519 & tOut$Chr=="13 " & tOut$Start<=34540107)
-  png(filename=paste(outF,"/",tName,"brca2.png",sep=""),height=500,width=800,
-      bg="white")
-  f1<-result$Start>=30782519 & result$Chr=="13 " & result$Start<=34540107
-  f2<-result$pval<=0.05
-  col.cord<-f[which(f1&f2)]
-  col.cord<-sapply(col.cord,function(x)which(x == x.start))
-  col.start<-rep(0,length(x.start))
-  if(length(col.cord)>0){
-    col.start[unlist(col.cord)]<-1
-  }
-  plot(tOut$Start[x.start],tOut$log2Ratio[x.start],pch=20,cex=0.8,
-       ylim=c(min(-2,min(tOut$log2Ratio[x.start])),
-              max(2,max(tOut$log2Ratio[x.start]))),col=(col.start)+1,
-       main=paste(tName,"BRCA2",sep=" "),xlab="genome cordinates (bp)",ylab="log2 ratio")
-  abline(v=32889411,col="grey",lty="dashed")
-  abline(v=32973704,col="grey",lty="dashed")
-  text(x=32889411+200,y=max(2,max(tOut$log2Ratio[x.start]))-0.1,labels="BRCA2")
-  dev.off()
+#   x.start<-which(tOut$Start>=30782519 & tOut$Chr=="13 " & tOut$Start<=34540107)
+#   png(filename=paste(outF,"/",tName,"brca2.png",sep=""),height=500,width=800,
+#       bg="white")
+#   f1<-result$Start>=30782519 & result$Chr=="13 " & result$Start<=34540107
+#   f2<-result$pval<=0.05
+#   col.cord<-f[which(f1&f2)]
+#   col.cord<-sapply(col.cord,function(x)which(x == x.start))
+#   col.start<-rep(0,length(x.start))
+#   if(length(col.cord)>0){
+#     col.start[unlist(col.cord)]<-1
+#   }
+#   plot(tOut$Start[x.start],tOut$log2Ratio[x.start],pch=20,cex=0.8,
+#        ylim=c(min(-2,min(tOut$log2Ratio[x.start])),
+#               max(2,max(tOut$log2Ratio[x.start]))),col=(col.start)+1,
+#        main=paste(tName,"BRCA2",sep=" "),xlab="genome cordinates (bp)",ylab="log2 ratio")
+#   abline(v=32889411,col="grey",lty="dashed")
+#   abline(v=32973704,col="grey",lty="dashed")
+#   text(x=32889411+200,y=max(2,max(tOut$log2Ratio[x.start]))-0.1,labels="BRCA2")
+#   dev.off()
   
   dfChanges<-NULL
   dfChanges$Chr<-tumor$Chr
@@ -458,110 +458,110 @@ for(i in 5:ncol(tumor)){
   segOut<-data.frame(segOut)
   #print(segOut)
   
-  png(filename=paste(outF,"/",tName,"chr17_seg.png",sep=""),height=500,width=800,
-      bg="white")
-  f<-segments$data$chrom=="17 " & !is.infinite(segments$data[,3]) & !is.na(segments$data[,3])
-  #plot(segments$data$maploc[f],segments$data[f,3],pch=20,cex=0.8,
-   #    main=paste(tName,"Chr17",sep=" "),xlab="genome cordinates (bp)",
-    #   ylab="log2 ratio",col=rgb(20,50,200,50,maxColorValue=255))
-  plot(segments$data[f,3],pch=20,cex=0.8,
-       main=paste(tName,"Chr17",sep=" "),xlab="genome loci",
-       ylab="log2 ratio",col=rgb(20,50,200,50,maxColorValue=255))
-  ff<-segments$output$chrom=="17 "
-  fff<-segOut$Chr=="17 " & segOut$pval<0.01
-  s=0
-  col2=rep("black",sum(ff))
-  lwd2=rep(1,sum(ff))
-  for(seg in 1:sum(ff)){
-    #lines(c(segments$output$loc.start[ff][seg],segments$output$loc.end[ff][seg]),
-     #      rep(segments$output$seg.mean[ff][seg],2))
-    c<-which(segments$output$loc.start[ff][seg]==segOut$seg.Start[fff])
-    if(length(c)>0){
-      col2[seg]<-"red"
-      lwd2[seg]<-2
-    }
-    e=s+segments$output$num.mark[ff][seg]
-    lines(seq(s+1,e),col=col2[seg],lwd=lwd2[seg],
-          rep(segments$output$seg.mean[ff][seg],segments$output$num.mark[ff][seg]))
-    s=e
-  }
-  d<-which(segments$data$maploc[f]<=41196189)
-  d<-d[length(d)]
-  abline(v=d,col="dark grey",lty="dashed")
-  d<-which(segments$data$maploc[f]<=41276656)
-  d<-d[length(d)]
-  abline(v=d,col="dark grey",lty="dashed")
-  dev.off()
+#   png(filename=paste(outF,"/",tName,"chr17_seg.png",sep=""),height=500,width=800,
+#       bg="white")
+#   f<-segments$data$chrom=="17 " & !is.infinite(segments$data[,3]) & !is.na(segments$data[,3])
+#   #plot(segments$data$maploc[f],segments$data[f,3],pch=20,cex=0.8,
+#    #    main=paste(tName,"Chr17",sep=" "),xlab="genome cordinates (bp)",
+#     #   ylab="log2 ratio",col=rgb(20,50,200,50,maxColorValue=255))
+#   plot(segments$data[f,3],pch=20,cex=0.8,
+#        main=paste(tName,"Chr17",sep=" "),xlab="genome loci",
+#        ylab="log2 ratio",col=rgb(20,50,200,50,maxColorValue=255))
+#   ff<-segments$output$chrom=="17 "
+#   fff<-segOut$Chr=="17 " & segOut$pval<0.01
+#   s=0
+#   col2=rep("black",sum(ff))
+#   lwd2=rep(1,sum(ff))
+#   for(seg in 1:sum(ff)){
+#     #lines(c(segments$output$loc.start[ff][seg],segments$output$loc.end[ff][seg]),
+#      #      rep(segments$output$seg.mean[ff][seg],2))
+#     c<-which(segments$output$loc.start[ff][seg]==segOut$seg.Start[fff])
+#     if(length(c)>0){
+#       col2[seg]<-"red"
+#       lwd2[seg]<-2
+#     }
+#     e=s+segments$output$num.mark[ff][seg]
+#     lines(seq(s+1,e),col=col2[seg],lwd=lwd2[seg],
+#           rep(segments$output$seg.mean[ff][seg],segments$output$num.mark[ff][seg]))
+#     s=e
+#   }
+#   d<-which(segments$data$maploc[f]<=41196189)
+#   d<-d[length(d)]
+#   abline(v=d,col="dark grey",lty="dashed")
+#   d<-which(segments$data$maploc[f]<=41276656)
+#   d<-d[length(d)]
+#   abline(v=d,col="dark grey",lty="dashed")
+#   dev.off()
+#   
+#   png(filename=paste(outF,"/",tName,"chr16_seg.png",sep=""),height=500,width=800,
+#       bg="white")
+#   f<-segments$data$chrom=="16 " & !is.infinite(segments$data[,3]) & !is.na(segments$data[,3])
+#   #plot(segments$data$maploc[f],segments$data[f,3],pch=20,cex=0.8,
+#   #    main=paste(tName,"Chr17",sep=" "),xlab="genome cordinates (bp)",
+#   #   ylab="log2 ratio",col=rgb(20,50,200,50,maxColorValue=255))
+#   plot(segments$data[f,3],pch=20,cex=0.8,
+#        main=paste(tName,"Chr16",sep=" "),xlab="genome loci",
+#        ylab="log2 ratio",col=rgb(20,50,200,50,maxColorValue=255))
+#   ff<-segments$output$chrom=="16 "
+#   fff<-segOut$Chr=="16 " & segOut$pval<0.01
+#   s=0
+#   col2=rep("black",sum(ff))
+#   lwd2=rep(1,sum(ff))
+#   for(seg in 1:sum(ff)){
+#     #lines(c(segments$output$loc.start[ff][seg],segments$output$loc.end[ff][seg]),
+#     #      rep(segments$output$seg.mean[ff][seg],2))
+#     c<-which(segments$output$loc.start[ff][seg]==segOut$seg.Start[fff])
+#     if(length(c)>0){
+#       col2[seg]<-"red"
+#       lwd2[seg]<-2
+#     }
+#     e=s+segments$output$num.mark[ff][seg]
+#     lines(seq(s+1,e),col=col2[seg],lwd=lwd2[seg],
+#           rep(segments$output$seg.mean[ff][seg],segments$output$num.mark[ff][seg]))
+#     s=e
+#   }
+#   d<-which(segments$data$maploc[f]<=23603459)
+#   d<-d[length(d)]
+#   abline(v=d,col="dark grey",lty="dashed")
+#   d<-which(segments$data$maploc[f]<=23641157)
+#   d<-d[length(d)]
+#   abline(v=d,col="dark grey",lty="dashed")
+#   dev.off()
   
-  png(filename=paste(outF,"/",tName,"chr16_seg.png",sep=""),height=500,width=800,
-      bg="white")
-  f<-segments$data$chrom=="16 " & !is.infinite(segments$data[,3]) & !is.na(segments$data[,3])
-  #plot(segments$data$maploc[f],segments$data[f,3],pch=20,cex=0.8,
-  #    main=paste(tName,"Chr17",sep=" "),xlab="genome cordinates (bp)",
-  #   ylab="log2 ratio",col=rgb(20,50,200,50,maxColorValue=255))
-  plot(segments$data[f,3],pch=20,cex=0.8,
-       main=paste(tName,"Chr16",sep=" "),xlab="genome loci",
-       ylab="log2 ratio",col=rgb(20,50,200,50,maxColorValue=255))
-  ff<-segments$output$chrom=="16 "
-  fff<-segOut$Chr=="16 " & segOut$pval<0.01
-  s=0
-  col2=rep("black",sum(ff))
-  lwd2=rep(1,sum(ff))
-  for(seg in 1:sum(ff)){
-    #lines(c(segments$output$loc.start[ff][seg],segments$output$loc.end[ff][seg]),
-    #      rep(segments$output$seg.mean[ff][seg],2))
-    c<-which(segments$output$loc.start[ff][seg]==segOut$seg.Start[fff])
-    if(length(c)>0){
-      col2[seg]<-"red"
-      lwd2[seg]<-2
-    }
-    e=s+segments$output$num.mark[ff][seg]
-    lines(seq(s+1,e),col=col2[seg],lwd=lwd2[seg],
-          rep(segments$output$seg.mean[ff][seg],segments$output$num.mark[ff][seg]))
-    s=e
-  }
-  d<-which(segments$data$maploc[f]<=23603459)
-  d<-d[length(d)]
-  abline(v=d,col="dark grey",lty="dashed")
-  d<-which(segments$data$maploc[f]<=23641157)
-  d<-d[length(d)]
-  abline(v=d,col="dark grey",lty="dashed")
-  dev.off()
-  
-  png(filename=paste(outF,"/",tName,"chr13_seg.png",sep=""),height=500,width=800,
-      bg="white")
-  f<-segments$data$chrom=="13 " & !is.infinite(segments$data[,3]) & !is.na(segments$data[,3])
-  #plot(segments$data$maploc[f],segments$data[f,3],pch=20,cex=0.8,
-  #    main=paste(tName,"Chr17",sep=" "),xlab="genome cordinates (bp)",
-  #   ylab="log2 ratio",col=rgb(20,50,200,50,maxColorValue=255))
-  plot(segments$data[f,3],pch=20,cex=0.8,
-       main=paste(tName,"Chr13",sep=" "),xlab="genome loci",
-       ylab="log2 ratio",col=rgb(20,50,200,50,maxColorValue=255))
-  ff<-segments$output$chrom=="13 "
-  fff<-segOut$Chr=="13 " & segOut$pval<0.01
-  s=0
-  col2=rep("black",sum(ff))
-  lwd2=rep(1,sum(ff))
-  for(seg in 1:sum(ff)){
-    #lines(c(segments$output$loc.start[ff][seg],segments$output$loc.end[ff][seg]),
-    #      rep(segments$output$seg.mean[ff][seg],2))
-    c<-which(segments$output$loc.start[ff][seg]==segOut$seg.Start[fff])
-    if(length(c)>0){
-      col2[seg]<-"red"
-      lwd2[seg]<-2
-    }
-    e=s+segments$output$num.mark[ff][seg]
-    lines(seq(s+1,e),col=col2[seg],lwd=lwd2[seg],
-          rep(segments$output$seg.mean[ff][seg],segments$output$num.mark[ff][seg]))
-    s=e
-  }
-  d<-which(segments$data$maploc[f]<=32889411)
-  d<-d[length(d)]
-  abline(v=d,col="dark grey",lty="dashed")
-  d<-which(segments$data$maploc[f]<=32973704)
-  d<-d[length(d)]
-  abline(v=d,col="dark grey",lty="dashed")
-  dev.off()
+#   png(filename=paste(outF,"/",tName,"chr13_seg.png",sep=""),height=500,width=800,
+#       bg="white")
+#   f<-segments$data$chrom=="13 " & !is.infinite(segments$data[,3]) & !is.na(segments$data[,3])
+#   #plot(segments$data$maploc[f],segments$data[f,3],pch=20,cex=0.8,
+#   #    main=paste(tName,"Chr17",sep=" "),xlab="genome cordinates (bp)",
+#   #   ylab="log2 ratio",col=rgb(20,50,200,50,maxColorValue=255))
+#   plot(segments$data[f,3],pch=20,cex=0.8,
+#        main=paste(tName,"Chr13",sep=" "),xlab="genome loci",
+#        ylab="log2 ratio",col=rgb(20,50,200,50,maxColorValue=255))
+#   ff<-segments$output$chrom=="13 "
+#   fff<-segOut$Chr=="13 " & segOut$pval<0.01
+#   s=0
+#   col2=rep("black",sum(ff))
+#   lwd2=rep(1,sum(ff))
+#   for(seg in 1:sum(ff)){
+#     #lines(c(segments$output$loc.start[ff][seg],segments$output$loc.end[ff][seg]),
+#     #      rep(segments$output$seg.mean[ff][seg],2))
+#     c<-which(segments$output$loc.start[ff][seg]==segOut$seg.Start[fff])
+#     if(length(c)>0){
+#       col2[seg]<-"red"
+#       lwd2[seg]<-2
+#     }
+#     e=s+segments$output$num.mark[ff][seg]
+#     lines(seq(s+1,e),col=col2[seg],lwd=lwd2[seg],
+#           rep(segments$output$seg.mean[ff][seg],segments$output$num.mark[ff][seg]))
+#     s=e
+#   }
+#   d<-which(segments$data$maploc[f]<=32889411)
+#   d<-d[length(d)]
+#   abline(v=d,col="dark grey",lty="dashed")
+#   d<-which(segments$data$maploc[f]<=32973704)
+#   d<-d[length(d)]
+#   abline(v=d,col="dark grey",lty="dashed")
+#   dev.off()
   
 #   chr<-unique(tumor$Chr)
 #   pdf(filename=paste(dir,"Profile.png",sep=""),height=750,width=1024,bg="white")
