@@ -6,6 +6,7 @@ import subprocess
 import shlex
 from multiprocessing import Process, Manager, Pool
 import random
+import re
 
 scriptPath = os.path.realpath(os.path.dirname(sys.argv[0]))
 
@@ -273,6 +274,14 @@ def calculateGC(fasta,bed,outF):
 	bed.close()
 	fastabed.close()
 	gc.close()
+
+def extractFileName(filePath):
+	#fname = os.path.split(filePath)[1].split("_")[0]
+	fname = os.path.split(filePath)[1]
+	#remove bam extension  
+	fname =	re.sub(".bam", "", fname, flags=re.I)
+	return fname
+
 	
 def getFileNames(tumor,control=""):
 	tumor=open(tumor)
@@ -282,7 +291,8 @@ def getFileNames(tumor,control=""):
 	for line in tumor:
 		l = line.rstrip()
 		tumorFiles.append(l)
-		fname=os.path.split(l)[1].split("_merged.tmp.realign.recal.bam")[0]
+		fname=extractFileName(l)
+
 		tumorNames.append(fname)
 
 	tumor.close()
@@ -293,7 +303,7 @@ def getFileNames(tumor,control=""):
 		for line in control:
 			l = line.rstrip()
 			controlFiles.append(l)
-			fname = os.path.split(l)[1].split("_merged.tmp.realign.recal.bam")[0]
+			fname=extractFileName(l)
 			controlNames.append(fname)
 	
 			control.close()
