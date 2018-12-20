@@ -1,0 +1,5 @@
+../testdata/normal-58-ch17.bam
+../testdata/normal-X5-ch17.bam
+../testdata/normal-X7-ch17.bam
+../testdata/normal-X2-ch17.bam
+../testdata/normal-X5l-ch17.bam
