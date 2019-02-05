@@ -15,7 +15,7 @@ class Options:
 
 	def __init__(self):
 		self.parser = argparse.ArgumentParser("Germline Copy Number detection tool for Haloplex data")
-		self.parser.add_argument('-t','--tumor',help = 'File containing collection of paths to  tumour BAM files, each in new line',required=True)
+		self.parser.add_argument('-t','--test',help = 'File containing collection of paths to  test BAM files, each in new line',required=True)
 		self.parser.add_argument('--info',help="Tab delimited file containing sample information (sample name, library average fragment size, flow cell, library prep plate and sequencing pool)")
 		self.parser.add_argument('-c','--control',help = 'Path to normalized samples to create the required control -either a directory containing all subdirectories for each batch or a file with normalized samples (with no batch based info)',required=True)
 		self.parser.add_argument('-b','--bed',help = 'Bed definition of covered regions',required=True)
@@ -31,8 +31,8 @@ class Options:
 			self.parser.print_help()
 			sys.exit(0)
 		
-		if args.tumor:
-			self.tumor=args.tumor
+		if args.test:
+			self.test=args.test
 		if args.control:
 			if os.path.isfile(args.control):
 				#cmd=shlex.split("awk '{print NF}' %s | tail -n 1" %(args.control))
@@ -73,7 +73,7 @@ class Options:
 def main():
 	options = Options()
 	
-	tumor = options.tumor
+	tumor = options.test
 	control = options.control
 	normalizeC=options.normalizeC
 	outDir = options.outF
@@ -105,6 +105,7 @@ def main():
 	size = map(float,libsize(inF,bed,outDir,all_samples))
 	print("sizes calculated")
 	tot_gm=1000000000 #normalizing based on million reads instead of geometric mean (this makes sure control and tumour samples have same libsize)
+
 	#and calculating RPKM i.e. (# reads * 10^9)/(target length*total mapped reads) = (average reads per targe base*10^9)/total mapped reads
 	
 	createBed(bed,os.path.join(outDir,"targets.bed"))
